@@ -34,6 +34,10 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
 end
 
 Then /I should see all the movies/ do
+  Movie.all.each do |movie|
+    input = %Q{I should see "#{movie.title}"}
+    step input
+  end
   # Make sure that all the movies in the app are visible in the table
-  fail "Unimplemented"
+  #fail "Unimplemented"
 end
