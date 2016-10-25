@@ -15,7 +15,11 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  fail "Unimplemented"
+  # http://stackoverflow.com/questions/9741716/regular-expression-to-match-if-string-a-appears-before-string-b-on-a-page-using_formtastic
+  # http://stackoverflow.com/questions/12513072/capybara-testing-if-page-has-regular-expression
+  
+  expect(page.text).to match(/.*#{e1}.*#{e2}/m)
+  #fail "Unimplemented"
 end
 
 # Make it easier to express checking or unchecking several boxes at once
